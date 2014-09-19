@@ -22,6 +22,7 @@ vote2 = Vote.create(vote_context_type: "Answer")
 
 
 user1.questions << question1
+user1.answers << answer1
 
 question1.answers << answer1
 
