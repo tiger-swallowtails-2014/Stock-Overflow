@@ -35,4 +35,3 @@ answer1.votes << vote2
 
 
 
-

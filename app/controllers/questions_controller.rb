@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   def show
     load_question; load_user;
-
+    # @answers = @question.answers
   end
 
   private
@@ -14,5 +14,4 @@ class QuestionsController < ApplicationController
     @user = User.find(params[:id])
   end
 end
-
 
