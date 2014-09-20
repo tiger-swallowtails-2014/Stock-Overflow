@@ -1,29 +1,38 @@
-<div class="question-container">
-  <div class="question-title">
-    <%= @question.title %>
-  </div>
-  <div class="question-content">
-    <%= @question.content %>
-  </div>
-  <p>Author: <%= @user.username %></p>
-  <!-- vote count -->
-  <!-- comments -->
-</div>
-<div class="answers-container">
-  <% @question.answers.each do |answer| %>
-    <% user = User.find(answer.user_id) %>
-    <% p answer.id %>
-    <% vote = Vote.where(vote_context_id: answer.id, vote_context_type: "Answer")[0] %>
-    <div class="answer-container">
-      <p><%= answer.content %></p>
-      <p><%= user.username %></p>
-      <% if vote %>
-        <p>Votes: <%= vote.num_of_votes %></p>
-      <% else %>
-        <p>Votes: 0</p>
-      <% end %>
-      <!-- vote button -->
-      <a href="">upvote</a>
+<!-- TODO: REFACTOR THE LOGICS OUT OF THE VIEW! -->
+<div class="container">
+  <div class="question-container">
+    <div class="question-title">
+      <%= @question.title %>
     </div>
-  <% end %>
+    <div class="question-content">
+      <%= @question.content %>
+    </div>
+    <p>Author: <%= @user.username %></p>
+    <!-- vote count -->
+    <p>Votes: <%= Vote.where(vote_context_id: @question.id, vote_context_type: "Question")[0].num_of_votes %></p>
+    <!-- comments -->
+    <a href="" class="show-question-comments">Comments</a>
+    <div class="question-comments-container">
+      <!-- <p><%= @question.responses.each  %></p> -->
+      <%= render 'question_comments' %>
+    </div>
+  </div>
+  <div class="answers-container">
+    <% @question.answers.each do |answer| %>
+      <% user = User.find(answer.user_id) %>
+      <% vote = Vote.where(vote_context_id: answer.id, vote_context_type: "Answer")[0] %>
+      <div class="answer-container">
+        <p><%= answer.content %></p>
+        <p><%= user.username %></p>
+        <% if vote %>
+          <p>Votes: <%= vote.num_of_votes %></p>
+        <% else %>
+          <p>Votes: 0</p>
+        <% end %>
+        <!-- vote button -->
+        <a href="">upvote</a>
+        <!-- comments -->
+      </div>
+    <% end %>
+  </div>
 </div>
