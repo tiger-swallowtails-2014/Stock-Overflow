@@ -1,36 +1,64 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+def create_users
+  User.create(username:"Will", email:"william@gmail.com", password:"123")
+  User.create(username:"Michael", email:"michael@gmail.com", password:"123")
+  User.create(username:"Matt", email:"matt@gmail.com", password:"123")
+end
 
-user1 = User.create(username:"Will", email:"william@gmail.com", password:"123")
-# user2 = User.create(username:"Michael", email:"michael@gmail.com", password:"123")
-# user3 = User.create(username:"Matt", email:"matt@gmail.com", password:"123")
+def create_questions
+  Question.create(title: "1st", content: "Can you explain this")
+  Question.create(title: "2nd", content: "Can you explain this")
+  Question.create(title: "3rd", content: "Can you explain this")
+  Question.create(title: "4th", content: "Can you explain this")
+  Question.create(title: "5th", content: "Can you explain this")
+  Question.create(title: "6th", content: "Can you explain this")
+  Question.create(title: "7th", content: "Can you explain this")
+  Question.create(title: "8th", content: "Can you explain this")
+  Question.create(title: "9th", content: "Can you explain this")
+  Question.create(title: "10th", content: "Can you explain this")
+  Question.create(title: "11st", content: "Can you explain this")
+  Question.create(title: "12nd", content: "Can you explain this")
+end
 
-question1 = Question.create(title: "What is that?", content: "Can you explain this")
+def create_answers
+  answer = Answer.create(content: "Yes")
+end
 
-answer1 = Answer.create(content: "Yes")
+def create_question_responses
+  50.times do
+    Response.create(content: "that sucks", response_context_type: "Question",response_context_id: rand(1..12))
+  end
+end
 
-response1 = Response.create(content: "that sucks", response_context_type: "Question")
-response2 = Response.create(content: "thats good", response_context_type: "Answer")
+def create_question_votes
+  50.times do
+    Vote.create(vote_context_type: "Question",vote_context_id: rand(1..12))
+  end
+end
 
-vote1 = Vote.create(vote_context_type: "Question")
-vote2 = Vote.create(vote_context_type: "Answer")
+def create_answer_responses
+  50.times do
+    Response.create(content: "that sucks", response_context_type: "Answer",response_context_id: rand(1..12))
+  end
+end
+
+def create_answer_votes
+  50.times do
+    Vote.create(vote_context_type: "Answer",vote_context_id: rand(1..12))
+  end
+end
+
+create_users
+create_questions
+create_answers
+create_question_responses
+create_question_votes
+create_answer_responses
+create_answer_votes
 
 
-user1.questions << question1
-user1.answers << answer1
+# user1.questions << question1
+# user.answers << answer
 
-question1.answers << answer1
-
-question1.responses << response1
-answer1.responses << response2
-
-question1.votes << vote1
-answer1.votes << vote2
 
 
 
