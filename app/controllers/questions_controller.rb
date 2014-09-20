@@ -1,8 +1,12 @@
 class QuestionsController < ApplicationController
+  def index
+    @questions = Question.last(10)
+  end
+
   def show
     load_question; load_user;
-
   end
+
 
   private
 

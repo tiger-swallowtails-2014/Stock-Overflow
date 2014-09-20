@@ -1,0 +1,9 @@
+<p>Register</p>
+<p>Sign In</p>
+
+<h1>Questions</h1>
+<ul>
+  <% @questions.each do |question| %>
+    <li> <%= question.title %></li>
+  <% end %>
+</ul>

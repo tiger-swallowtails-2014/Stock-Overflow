@@ -1,4 +1,6 @@
 Stockoverflow::Application.routes.draw do
+  root :to => 'questions#index'
+
   resources :users do
     resources :questions do
       resources :responses
@@ -13,4 +15,5 @@ Stockoverflow::Application.routes.draw do
   get    '/login'  => 'sessions#new', :as => :login
   post   '/login'  => 'sessions#create'
   delete '/logout' => 'sessions#destroy', :as => :logout
+
 end
