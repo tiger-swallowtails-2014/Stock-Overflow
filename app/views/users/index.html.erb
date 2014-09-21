@@ -26,7 +26,7 @@
         <ul>
           <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
           <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
-          <li> <div class="title"><%= question.title %></p> </div> </li>
+          <li> <div class="title"><%= link_to question.title, user_question_path(User.find(question.user_id), question) %> </div> </li>
         <ul>
       </div>
     <% end %>
@@ -39,7 +39,7 @@
         <ul>
           <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
           <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
-          <li> <div class="title"><%= question.title %></p> </div> </li>
+          <li> <div class="title"><%= link_to question.title, user_question_path(User.find(question.user_id), question) %> </div> </li>
         <ul>
       </div>
     <% end %>
@@ -52,7 +52,7 @@
         <ul>
           <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
           <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
-          <li> <div class="title"><%= question.title %></p> </div> </li>
+          <li> <div class="title"><%= link_to question.title, user_question_path(User.find(question.user_id), question) %> </div> </li>
         <ul>
       </div>
     <% end %>
