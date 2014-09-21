@@ -1,12 +1,19 @@
 <% if session[:user_id] %>
-
   <div class="entry_button">
+    <h1>Welcome  <%= @user.username %> </h1>
     <ul>
       <li><%= button_to "Sign Out", sessions_path, :method => :delete %></li>
     </ul>
   </div>
-
-  <h1>Welcome  <%= @user.username %> </h1>
+<% else %>
+  <div class="entry_button">
+    <ul>
+      <li><h1>STOCK OVERFLOW</h1></li>
+      <li><%=link_to "Sign Up", new_user_path %></li>
+      <li><%=link_to "Sign In", sessions_path %></li>
+    </ul>
+  </div>
+<% end %>
 
   <button class="recent_button">Most Recent</button>
   <button class="vote_button">Highest Voted</button>
@@ -19,7 +26,7 @@
         <ul>
           <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
           <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
-          <li> <div class="title"><%= question.title %></p> </div> </li>
+          <li> <div class="title"><%= link_to question.title, user_question_path(User.find(question.user_id), question) %> </div> </li>
         <ul>
       </div>
     <% end %>
@@ -32,7 +39,7 @@
         <ul>
           <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
           <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
-          <li> <div class="title"><%= question.title %></p> </div> </li>
+          <li> <div class="title"><%= link_to question.title, user_question_path(User.find(question.user_id), question) %> </div> </li>
         <ul>
       </div>
     <% end %>
@@ -45,66 +52,9 @@
         <ul>
           <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
           <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
-          <li> <div class="title"><%= question.title %></p> </div> </li>
+          <li> <div class="title"><%= link_to question.title, user_question_path(User.find(question.user_id), question) %> </div> </li>
         <ul>
       </div>
     <% end %>
   </div>
-
-<% else %>
-
-
-  <div class="entry_button">
-    <ul>
-      <li><h1>STOCK OVERFLOW</h1></li>
-      <li><%=button_to "Sign Up", new_user_path %></li>
-      <li><%=button_to "Sign In", sessions_path %></li>
-    </ul>
-  </div>
-
-  <button class="recent_button">Most Recent</button>
-  <button class="vote_button">Highest Voted</button>
-  <button class="trending_button">Trending</button>
-
-  <div class="container recent">
-    <h1 class="questiontitle">Most Recent Questions</h1>
-    <%  @most_recent_questions.reverse_each do |question| %>
-      <div class="question">
-        <ul>
-          <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
-          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
-          <li> <div class="title"><%= question.title %></p> </div> </li>
-        <ul>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="container vote">
-    <h1 class="questiontitle">Highest Voted Questions</h1>
-      <% @highest_voted_questions.each do |question| %>
-       <div class="question">
-        <ul>
-          <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
-          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
-          <li> <div class="title"><%= question.title %></p> </div> </li>
-        <ul>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="container trending">
-    <h1 class="questiontitle">Trending Questions</h1>
-      <% @trending_questions.each do |question| %>
-       <div class="question">
-        <ul>
-          <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
-          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
-          <li> <div class="title"><%= question.title %></p> </div> </li>
-        <ul>
-      </div>
-    <% end %>
-  </div>
-
-<%end%>
-
 
