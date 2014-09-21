@@ -1,6 +1,10 @@
 <% if session[:user_id] %>
 
-<%= link_to "Sign Out", sessions_path, :method => :delete %>
+  <div class="entry_button">
+    <ul>
+      <li><%= button_to "Sign Out", sessions_path, :method => :delete %></li>
+    </ul>
+  </div>
 
   <h1>Welcome  <%= @user.username %> </h1>
 
@@ -10,65 +14,95 @@
 
   <div class="recent">
     <h1>Most Recent Questions</h1>
-    <ul>
-      <%  @most_recent_questions.reverse_each do |question| %>
-      <li> <%= question.title %></li>
-      <% end %>
-    </ul>
+    <%  @most_recent_questions.reverse_each do |question| %>
+      <div class="question">
+        <ul>
+          <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
+          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
+          <li> <div class="title"><%= question.title %></p> </div> </li>
+        <ul>
+      </div>
+    <% end %>
   </div>
 
   <div class="vote">
     <h1>Highest Voted Questions</h1>
-    <ul>
       <% @highest_voted_questions.each do |question| %>
-      <li> <%= question.title%> = <%=question.votes.count %></li>
-      <% end %>
-    </ul>
+       <div class="question">
+        <ul>
+          <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
+          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
+          <li> <div class="title"><%= question.title %></p> </div> </li>
+        <ul>
+      </div>
+    <% end %>
   </div>
 
   <div class="trending">
     <h1>Trending Questions</h1>
-    <ul>
       <% @trending_questions.each do |question| %>
-      <li> <%= question.title%> = <%=question.responses.count %></li>
-      <% end %>
-    </ul>
+       <div class="question">
+        <ul>
+          <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
+          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
+          <li> <div class="title"><%= question.title %></p> </div> </li>
+        <ul>
+      </div>
+    <% end %>
   </div>
 
 <% else %>
 
-  <%=link_to "Sign Up", new_user_path %>
-  <%=link_to "Sign In", sessions_path %>
+
+  <div class="entry_button">
+    <ul>
+      <li><h1>STOCK OVERFLOW</h1></li>
+      <li><%=button_to "Sign Up", new_user_path %></li>
+      <li><%=button_to "Sign In", sessions_path %></li>
+    </ul>
+  </div>
 
   <button class="recent_button">Most Recent</button>
   <button class="vote_button">Highest Voted</button>
   <button class="trending_button">Trending</button>
 
   <div class="recent">
-    <h1>Most Recent Questions</h1>
-    <ul>
-      <%  @most_recent_questions.reverse_each do |question| %>
-      <li> <%= question.title %></li>
-      <% end %>
-    </ul>
+    <h1 class="questiontitle">Most Recent Questions</h1>
+    <%  @most_recent_questions.reverse_each do |question| %>
+      <div class="question">
+        <ul>
+          <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
+          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
+          <li> <div class="title"><%= question.title %></p> </div> </li>
+        <ul>
+      </div>
+    <% end %>
   </div>
 
   <div class="vote">
-    <h1>Highest Voted Questions</h1>
-    <ul>
+    <h1 class="questiontitle">Highest Voted Questions</h1>
       <% @highest_voted_questions.each do |question| %>
-      <li> <%= question.title%> = <%=question.votes.count %></li>
-      <% end %>
-    </ul>
+       <div class="question">
+        <ul>
+          <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
+          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
+          <li> <div class="title"><%= question.title %></p> </div> </li>
+        <ul>
+      </div>
+    <% end %>
   </div>
 
   <div class="trending">
-    <h1>Trending Questions</h1>
-    <ul>
+    <h1 class="questiontitle">Trending Questions</h1>
       <% @trending_questions.each do |question| %>
-      <li> <%= question.title%> = <%=question.responses.count %></li>
-      <% end %>
-    </ul>
+       <div class="question">
+        <ul>
+          <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
+          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
+          <li> <div class="title"><%= question.title %></p> </div> </li>
+        <ul>
+      </div>
+    <% end %>
   </div>
 
 <%end%>

@@ -9,19 +9,19 @@ var Question = {
   renderHighestVoted: function() {
     $(".recent").hide()
     $(".trending").hide()
-    $(".vote").show()
+    $(".vote").slideDown(1000)
   },
 
   renderMostRecent: function() {
     $(".vote").hide()
     $(".trending").hide()
-    $(".recent").show()
+    $(".recent").slideDown(1000)
   },
 
   renderTrending: function() {
     $(".vote").hide()
     $(".recent").hide()
-    $(".trending").show()
+    $(".trending").slideDown(1000)
   }
 
 }
