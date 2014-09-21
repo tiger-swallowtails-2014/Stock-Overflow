@@ -21,9 +21,9 @@ function bindEvents() {
     var request = $.ajax({url: $(this).attr("href"), type: "GET", data: {context_type: context_type}, context: this})
     request.done(function(data) {
       if (data.type === "Question") {
-        $(".question-vote-count").html("Votes: " + data.count);
+        $(".question-vote-count").html(data.count);
       } else if (data.type === "Answer") {
-        $(this).parent().find(".answer-vote-count").html("Votes: " + data.count);
+        $(this).parent().find(".answer-vote-count").html(data.count);
       }
     })
   })
@@ -37,9 +37,9 @@ function bindEvents() {
     var request = $.ajax({url: $(this).attr("href"), type: "DELETE", data: {context_type: context_type}, context: this})
     request.done(function(data) {
       if (data.type === "Question") {
-        $(".question-vote-count").html("Votes: " + data.count);
+        $(".question-vote-count").html(data.count);
       } else if (data.type === "Answer") {
-        $(this).parent().find(".answer-vote-count").html("Votes: " + data.count);
+        $(this).parent().find(".answer-vote-count").html(data.count);
       }
     })
   })

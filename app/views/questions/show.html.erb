@@ -1,17 +1,28 @@
 <!-- TODO: REFACTOR THE LOGICS OUT OF THE VIEW! -->
+ <div class="entry_button">
+  <ul>
+    <li><h1>STOCK OVERFLOW</h1></li>
+    <li><%=link_to @user.username, user_path(@user)%></li>
+    <li><%= button_to "Sign Out", sessions_path, :method => :delete %></li>
+  </ul>
+</div>
+
 <div class="container">
   <div class="question-container">
     <div class="question-title">
       <%= @question.title %>
     </div>
     <div class="question-content">
+      <div class="votecount">
+        <a class="upvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/votes/new"><i class="fa fa-chevron-circle-up"></i></a></br>
+        <p class="question-vote-count"><%= Vote.where(vote_context_id: @question.id, vote_context_type: "Question").count %></p>
+        <a class="downvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/votes/destroy"><i class="fa fa-chevron-circle-down"></i></a></br>
+      <!-- vote count -->
+      </div>
       <%= @question.content %>
     </div>
-    <p>author: <%= @user.username %></p>
-    <a class="upvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/votes/new">upvote</a></br>
-    <a class="downvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/votes/destroy">downvote</a></br>
-    <!-- vote count -->
-    <p class="question-vote-count">Votes: <%= Vote.where(vote_context_id: @question.id, vote_context_type: "Question").count %></p>
+    <p>asked by: <%= @user.username %></p>
+
     <!-- comments -->
     <a class="show-question-comments">Comments</a>
     <div class="question-comments-container">
@@ -19,24 +30,34 @@
       <%= render 'question_comments' %>
     </div>
   </div>
-  <hr>
+
 
   <div class="answers-container">
     <% @question.answers.each do |answer| %>
       <% user = User.find(answer.user_id) %>
       <% votes = Vote.where(vote_context_id: answer.id, vote_context_type: "Answer") %>
+      <div class="answer-count">
+        <%= @question.answers.count %> Answers
+      </div>
+
       <div class="answer-container">
-        <p>answer: <%= answer.content %></p>
-        <p>author: <%= user.username %></p>
-        <% if votes %>
+
+        <div class="votecount">
+          <a class="upvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=answer.id%>/votes/new"><i class="fa fa-chevron-circle-up"></i></a></br>
+          <p class="answer-vote-count"><%= votes.count %></p>
+          <a class="downvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=answer.id%>/votes/destroy"><i class="fa fa-chevron-circle-down"></i></a></br>
+        </div>
+
+        <p><%= answer.content %></p>
+        <p>answered by: <%= user.username %></p>
+   <!--      <% if votes %>
           <p class="answer-vote-count">Votes: <%= votes.count %></p>
         <% else %>
           <p class="answer-vote-count">Votes: 0</p>
-        <% end %>
-        <!-- vote button -->
-        <a class="upvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=answer.id%>/votes/new">upvote</a></br>
-        <a class="downvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=answer.id%>/votes/destroy">downvote</a></br>
+        <% end %> -->
+
         <!-- comments -->
+        <br><br><br>
         <a class="show-answer-comments">Comments</a>
         <div class="answer-comments-container">
           <!-- <p><%= @question.responses.each  %></p> -->
@@ -44,7 +65,7 @@
           <%= render 'answer_comments' %>
         </div>
       </div>
-      <hr>
+
     <% end %>
   </div>
 </div>

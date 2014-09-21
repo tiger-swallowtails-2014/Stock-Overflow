@@ -6,19 +6,18 @@ end
 
 def create_questions
 
-  User.first.questions << Question.create(title: "1st", content: "Can you explain this")
-  User.first.questions << Question.create(title: "2nd", content: "Can you explain this")
-  User.first.questions << Question.create(title: "3rd", content: "Can you explain this")
-  User.first.questions << Question.create(title: "4th", content: "Can you explain this")
-  User.find(2).questions << Question.create(title: "5th", content: "Can you explain this")
-  User.find(2).questions << Question.create(title: "6th", content: "Can you explain this")
-  User.find(2).questions << Question.create(title: "7th", content: "Can you explain this")
-  User.find(2).questions << Question.create(title: "8th", content: "Can you explain this")
-  User.last.questions << Question.create(title: "9th", content: "Can you explain this")
-  User.last.questions << Question.create(title: "10th", content: "Can you explain this")
-  User.last.questions << Question.create(title: "11st", content: "Can you explain this")
-  User.last.questions << Question.create(title: "12nd", content: "Can you explain this")
-end
+  User.first.questions << Question.create(title: "What is market crash?", content: "Can you explain this")
+  User.first.questions << Question.create(title: "What is a share?", content: "Can you explain this")
+  User.first.questions << Question.create(title: "Can somebody explain insider trading?", content: "Can you explain this")
+  User.first.questions << Question.create(title: "What is the difference between bid price and ask price?", content: "Can you explain this")
+  User.find(2).questions << Question.create(title: "Will somebody always buy my stocks when I sell them?", content: "Can you explain this")
+  User.find(2).questions << Question.create(title: "How do I know which stocks to buy?", content: "Can you explain this")
+  User.find(2).questions << Question.create(title: "What is mutual fund?", content: "Can you explain this")
+  User.find(2).questions << Question.create(title: "What is an IPO?", content: "Can you explain this")
+  User.last.questions << Question.create(title: "What is the difference between a stock exchange and futures exchange?", content: "Can you explain this")
+  User.last.questions << Question.create(title: "What is the difference between a long and a short position in the market?", content: "Can you explain this")
+  User.last.questions << Question.create(title: "Why are the trading area called pits?", content: "Can you explain this")
+  User.last.questions << Question.create(title: "What is a broker?", content: "Can you explain this")
 
 end
 
