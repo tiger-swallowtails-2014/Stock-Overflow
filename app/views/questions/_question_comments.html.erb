@@ -1,4 +1,6 @@
 <!-- TODO: REFACTOR THE LOGICS OUT OF THE VIEW! -->
 <% @question.responses.each do |response| %>
-  <p><%= response.content %></p>
+  <p>------------</p>
+  <p><%= response.content %> | <%= User.find(response.user_id).username %></p>
+
 <% end %>

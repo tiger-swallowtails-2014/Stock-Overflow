@@ -37,9 +37,10 @@
         <a class="upvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=answer.id%>/votes/new">upvote</a></br>
         <a class="downvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=answer.id%>/votes/destroy">downvote</a></br>
         <!-- comments -->
-        <a class="show-answer-comments" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%answer.id%>/responses">Comments</a>
-        <div class="question-comments-container">
+        <a class="show-answer-comments">Comments</a>
+        <div class="answer-comments-container">
           <!-- <p><%= @question.responses.each  %></p> -->
+          <% @current_answer = answer %>
           <%= render 'answer_comments' %>
         </div>
       </div>

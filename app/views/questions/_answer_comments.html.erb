@@ -1,1 +1,5 @@
-<p>123</p>
+<% @current_answer.responses.each do |response| %>
+  <p>------------</p>
+  <p><%= response.content %> | <%= User.find(response.user_id).username %></p>
+
+<% end %>

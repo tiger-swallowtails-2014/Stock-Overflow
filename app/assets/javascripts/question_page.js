@@ -1,16 +1,16 @@
 $(document).ready(function() {
   bindEvents();
   $('.question-comments-container').hide();
-  // $('.answer-comments-container').hide();
+  $('.answer-comments-container').hide();
 })
 
 function bindEvents() {
   $('.show-question-comments').click(function() {
     $('.question-comments-container').toggle('slow');
   })
-  // $('.show-answer-comments').click(function() {
-  //   $('.answer-comments-container').toggle('slow');
-  // })
+  $('.show-answer-comments').bind("click", function() {
+    $(this).parent().find(".answer-comments-container").toggle('slow');
+  })
   $('body').on("click", ".upvote", function(event) {
     event.preventDefault();
     if ($(this).attr("href").indexOf("answers") > -1) {
@@ -44,11 +44,12 @@ function bindEvents() {
     })
   })
 
-  $('.answers-container').on("click", ".show-answer-comments", function(event) {
-    event.preventDefault();
-    var request = $.ajax({url: $(this).attr("href"), type: "GET"});
-    request.done(function() {
-      console.log("success");
-    })
-  })
+  // $('.answers-container').on("click", ".show-answer-comments", function(event) {
+  //   event.preventDefault();
+  //   var request = $.ajax({url: $(this).attr("href"), type: "GET"});
+  //   request.done(function(data) {
+  //     console.log("success");
+  //     console.log(data)
+  //   })
+  // })
 }
