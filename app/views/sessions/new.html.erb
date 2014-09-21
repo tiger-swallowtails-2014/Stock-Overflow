@@ -1,0 +1,5 @@
+<%= form_tag("/sessions/new", :method => "post") do %>
+  Email: <%= text_field_tag(:email) %>
+  Password: <%= text_field_tag(:password) %>
+  <%= submit_tag("Sign In") %>
+<% end %>

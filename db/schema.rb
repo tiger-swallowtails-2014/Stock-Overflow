@@ -47,11 +47,10 @@ ActiveRecord::Schema.define(:version => 20140919222915) do
   end
 
   create_table "votes", :force => true do |t|
-    t.integer  "num_of_votes",      :default => 0
     t.integer  "vote_context_id"
     t.string   "vote_context_type"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end
