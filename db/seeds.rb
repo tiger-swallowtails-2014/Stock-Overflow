@@ -5,6 +5,7 @@ def create_users
 end
 
 def create_questions
+
   User.first.questions << Question.create(title: "1st", content: "Can you explain this")
   User.first.questions << Question.create(title: "2nd", content: "Can you explain this")
   User.first.questions << Question.create(title: "3rd", content: "Can you explain this")
@@ -17,6 +18,7 @@ def create_questions
   User.last.questions << Question.create(title: "10th", content: "Can you explain this")
   User.last.questions << Question.create(title: "11st", content: "Can you explain this")
   User.last.questions << Question.create(title: "12nd", content: "Can you explain this")
+end
 
 end
 
