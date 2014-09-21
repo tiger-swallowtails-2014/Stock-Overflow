@@ -5,11 +5,12 @@ Stockoverflow::Application.routes.draw do
     resources :questions do
       resources :responses
       resources :votes
+      resources :answers do
+        resources :responses
+        resources :votes
     end
-    resources :answers do
-      resources :responses
-      resources :votes
     end
+
   end
 
   get    '/login'  => 'sessions#new', :as => :login

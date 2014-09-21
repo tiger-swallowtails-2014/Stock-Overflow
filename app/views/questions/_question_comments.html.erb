@@ -1,2 +1,4 @@
 <!-- TODO: REFACTOR THE LOGICS OUT OF THE VIEW! -->
-<p>abc</p>
+<% @question.responses.each do |response| %>
+  <p><%= response.content %></p>
+<% end %>

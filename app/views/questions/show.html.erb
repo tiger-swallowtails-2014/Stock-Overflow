@@ -7,32 +7,43 @@
     <div class="question-content">
       <%= @question.content %>
     </div>
-    <p>Author: <%= @user.username %></p>
+    <p>author: <%= @user.username %></p>
+    <a class="upvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/votes/new">upvote</a></br>
+    <a class="downvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/votes/destroy">downvote</a></br>
     <!-- vote count -->
-    <p>Votes: <%= Vote.where(vote_context_id: @question.id, vote_context_type: "Question")[0].num_of_votes %></p>
+    <p class="question-vote-count">Votes: <%= Vote.where(vote_context_id: @question.id, vote_context_type: "Question").count %></p>
     <!-- comments -->
-    <a href="" class="show-question-comments">Comments</a>
+    <a class="show-question-comments">Comments</a>
     <div class="question-comments-container">
       <!-- <p><%= @question.responses.each  %></p> -->
       <%= render 'question_comments' %>
     </div>
   </div>
+  <hr>
+
   <div class="answers-container">
     <% @question.answers.each do |answer| %>
       <% user = User.find(answer.user_id) %>
-      <% vote = Vote.where(vote_context_id: answer.id, vote_context_type: "Answer")[0] %>
+      <% votes = Vote.where(vote_context_id: answer.id, vote_context_type: "Answer") %>
       <div class="answer-container">
-        <p><%= answer.content %></p>
-        <p><%= user.username %></p>
-        <% if vote %>
-          <p>Votes: <%= vote.num_of_votes %></p>
+        <p>answer: <%= answer.content %></p>
+        <p>author: <%= user.username %></p>
+        <% if votes %>
+          <p class="answer-vote-count">Votes: <%= votes.count %></p>
         <% else %>
-          <p>Votes: 0</p>
+          <p class="answer-vote-count">Votes: 0</p>
         <% end %>
         <!-- vote button -->
-        <a href="">upvote</a>
+        <a class="upvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=answer.id%>/votes/new">upvote</a></br>
+        <a class="downvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=answer.id%>/votes/destroy">downvote</a></br>
         <!-- comments -->
+        <a class="show-answer-comments" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%answer.id%>/responses">Comments</a>
+        <div class="question-comments-container">
+          <!-- <p><%= @question.responses.each  %></p> -->
+          <%= render 'answer_comments' %>
+        </div>
       </div>
+      <hr>
     <% end %>
   </div>
 </div>
