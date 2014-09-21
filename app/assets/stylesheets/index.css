@@ -1,3 +1,14 @@
+body {
+
+}
+
+.container{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom:5%;
+  margin-top: 3%;
+}
+
 button {
   font-size: 18px;
   margin-top: 2%;

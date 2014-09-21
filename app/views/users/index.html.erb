@@ -12,7 +12,7 @@
   <button class="vote_button">Highest Voted</button>
   <button class="trending_button">Trending</button>
 
-  <div class="recent">
+  <div class="container recent">
     <h1>Most Recent Questions</h1>
     <%  @most_recent_questions.reverse_each do |question| %>
       <div class="question">
@@ -25,7 +25,7 @@
     <% end %>
   </div>
 
-  <div class="vote">
+  <div class="container vote">
     <h1>Highest Voted Questions</h1>
       <% @highest_voted_questions.each do |question| %>
        <div class="question">
@@ -38,7 +38,7 @@
     <% end %>
   </div>
 
-  <div class="trending">
+  <div class="container trending">
     <h1>Trending Questions</h1>
       <% @trending_questions.each do |question| %>
        <div class="question">
@@ -66,7 +66,7 @@
   <button class="vote_button">Highest Voted</button>
   <button class="trending_button">Trending</button>
 
-  <div class="recent">
+  <div class="container recent">
     <h1 class="questiontitle">Most Recent Questions</h1>
     <%  @most_recent_questions.reverse_each do |question| %>
       <div class="question">
@@ -79,7 +79,7 @@
     <% end %>
   </div>
 
-  <div class="vote">
+  <div class="container vote">
     <h1 class="questiontitle">Highest Voted Questions</h1>
       <% @highest_voted_questions.each do |question| %>
        <div class="question">
@@ -92,7 +92,7 @@
     <% end %>
   </div>
 
-  <div class="trending">
+  <div class="container trending">
     <h1 class="questiontitle">Trending Questions</h1>
       <% @trending_questions.each do |question| %>
        <div class="question">
