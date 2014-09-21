@@ -1,0 +1,59 @@
+<% if session[:user_id] %>
+
+<%= link_to "Sign Out", sessions_path, :method => :delete %>
+
+  <h1>Welcome</h1>
+  <%= @user.username %>
+
+  <h1>Most Recent Questions</h1>
+  <ul>
+    <%  @most_recent_questions.reverse_each do |question| %>
+    <li> <%= question.title %></li>
+    <% end %>
+  </ul>
+
+  <h1>Highest Voted Questions</h1>
+  <ul>
+    <% @highest_voted_questions.each do |question| %>
+    <li> <%= question.title%> = <%=question.votes.count %></li>
+    <% end %>
+  </ul>
+
+  <h1>Trending Questions</h1>
+  <ul>
+    <% @trending_questions.each do |question| %>
+    <li> <%= question.title%> = <%=question.responses.count %></li>
+    <% end %>
+  </ul>
+
+
+<% else %>
+
+  <%=link_to "Sign Up", new_user_path %>
+  <%=link_to "Sign In", sessions_path %>
+
+
+  <h1>Most Recent Questions</h1>
+  <ul>
+    <%  @most_recent_questions.reverse_each do |question| %>
+    <li> <%= question.title %></li>
+    <% end %>
+  </ul>
+
+  <h1>Highest Voted Questions</h1>
+  <ul>
+    <% @highest_voted_questions.each do |question| %>
+    <li> <%= question.title%> = <%=question.votes.count %></li>
+    <% end %>
+  </ul>
+
+  <h1>Trending Questions</h1>
+  <ul>
+    <% @trending_questions.each do |question| %>
+    <li> <%= question.title%> = <%=question.responses.count %></li>
+    <% end %>
+  </ul>
+
+<%end%>
+
+
