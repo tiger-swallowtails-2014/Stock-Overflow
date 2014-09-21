@@ -1,5 +1,4 @@
-<!-- TODO: REFACTOR THE LOGICS OUT OF THE VIEW! -->
-<% @question.responses.each do |response| %>
+<% @current_answer.responses.each do |response| %>
   <p>------------</p>
   <p><%= response.content %> | <%= User.find(response.user_id).username %></p>
 
