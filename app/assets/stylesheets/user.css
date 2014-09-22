@@ -41,7 +41,7 @@
 }
 
 .answer-container {
-  height: 130px;
+  height: auto;
   border-top: 2px solid #d8d8d8;
   padding-top: 2%;
 }
