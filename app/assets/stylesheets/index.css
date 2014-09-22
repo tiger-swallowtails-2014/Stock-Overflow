@@ -22,6 +22,7 @@ body {
 }
 
 .show-question-form {
+  font-family: 'Oxygen', sans-serif;
   text-align: center;
   display: block;
   font-size: 18px;
@@ -38,6 +39,7 @@ body {
 }
 
 .question_form{
+  font-family: 'Oxygen', sans-serif;
   display: inline-block;
   text-align: center;
   margin-left: 29%;
@@ -71,6 +73,7 @@ hr {
 }
 
 .container{
+  font-family: 'Oxygen', sans-serif;
   padding: 5px;
   background-color: rgba(236, 240, 241, 0.9);
   margin-left: 14%;
@@ -89,6 +92,51 @@ hr {
 }
 
 .button {
+  font-size: 18px;
+  margin-top: 2%;
+  position: relative;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  margin-bottom: 1.5%;
+  left: 32%;
+  color: #000000;
+  background-color: #ECF0F1;
+  /*border: 2px solid black;*/
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.vote_button {
+  font-size: 18px;
+  margin-top: 2%;
+  position: relative;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  margin-bottom: 1.5%;
+  left: 32%;
+  color: #000000;
+  background-color: #ECF0F1;
+  /*border: 2px solid black;*/
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.recent_button {
+  font-size: 18px;
+  margin-top: 2%;
+  position: relative;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  margin-bottom: 1.5%;
+  left: 32%;
+  color: #000000;
+  background-color: #ECF0F1;
+  /*border: 2px solid black;*/
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.trending_button {
   font-size: 18px;
   margin-top: 2%;
   position: relative;
@@ -150,7 +198,7 @@ button:hover {
 }
 
 .entry_button ul li h1{
-  margin-right: 450px;
+  margin-right: 410px;
   font-family: 'Playball', cursive;
   font-size: 50px;
   padding: 0%;
@@ -174,7 +222,7 @@ span {
   display: inline-block;
 }
 
-.numvotes {
+.numvotes {`
   font-family: 'Maven Pro', sans-serif;
   font-size: 14px;
   width: 90%;
@@ -194,7 +242,7 @@ span {
   position: relative;
   left: 40px;
   bottom: 10px;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
 }
 
@@ -218,4 +266,24 @@ a:visited {
 a:visited:hover {
   color: orange;
   transition: color, 0.5s;
+}
+
+.create-answer-comment {
+  cursor: pointer;
+}
+
+.show-answer-comments {
+  cursor: pointer;
+}
+
+.create-question-comment {
+  cursor: pointer;
+}
+
+.show-question-comments {
+  cursor: pointer;
+}
+
+.create-answer {
+  cursor: pointer;
 }

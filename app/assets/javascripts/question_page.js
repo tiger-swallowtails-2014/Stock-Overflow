@@ -89,4 +89,14 @@ function bindEvents() {
     })
   })
 
+  $(".upvote").on("click", function() { 
+    $(this).hide(); 
+    $(this).parent().find(".downvote").show();
+  })
+  $(".downvote").on("click", function() { 
+    $(this).hide(); 
+    $(this).parent().find(".upvote").show();
+  })
+
+
 }
