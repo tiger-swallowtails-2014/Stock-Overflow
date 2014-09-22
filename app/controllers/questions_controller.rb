@@ -5,16 +5,21 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    p session[:user_id]
     @user = User.find(params[:user_id])
     @question = Question.find(params[:id])
 
   end
 
+  def new
+    @question = Question.new
+  end
 
   def create
+    p params
     @user = User.find(params[:user_id])
-    @question = Question.new params[:question]
-
+    @question = Question.create(title: params[:title], content: params[:content])
+    @user.questions << @question
     if @question.save
       redirect_to user_question_path(@user, @question)
     else
@@ -22,9 +27,7 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def new
-    @question = Question.new
-  end
+
 
   private
 

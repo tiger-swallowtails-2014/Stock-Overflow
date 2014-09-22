@@ -1,8 +1,9 @@
 <!-- TODO: REFACTOR THE LOGICS OUT OF THE VIEW! -->
+
  <div class="entry_button">
   <ul>
     <li><h1>STOCK OVERFLOW</h1></li>
-    <li><%=link_to @user.username, user_path(@user)%></li>
+    <li><%=link_to User.find(session[:user_id]).username, user_path(session[:user_id])%></li>
     <li><%= button_to "Sign Out", sessions_path, :method => :delete %></li>
   </ul>
 </div>

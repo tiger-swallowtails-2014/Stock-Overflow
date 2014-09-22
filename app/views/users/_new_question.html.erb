@@ -1,0 +1,8 @@
+<div class="question-form">
+  <h1>Submit a new question</h1>
+  <form class="question-form" action="/users/<%=@user.id%>/questions" method="post">
+    <input class="input-content" type="text" name="title" placeholder="title here"></br>
+    <textarea class="input-content" rows="4" cols="50" name="content" placeholder="content here"></textarea></br>
+    <input class="question-submit" type="submit">
+  </form>
+</div>
