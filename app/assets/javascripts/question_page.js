@@ -55,27 +55,23 @@ function bindEvents() {
 
   $(".question-comment-form").on("submit", function(event) {
     event.preventDefault();
-    var button = $(".create-question-comment");
-    var form = $(".question-comment-form");
     var paramsData = {content: $(this).parent().find('.input-content').val(),
                       type: "Question"};
-    var request = $.ajax({url: $(this).attr("action"), type: "POST", data: $(this).serialize(), context: this})
+    var request = $.ajax({url: $(this).attr("action"), type: "POST", data: paramsData, context: this})
     request.done(function(data) {
-      button.before(data);
-      form.toggle();
+      $(this).parent().find(".create-question-comment").before(data);
+      $(this).parent().find(".answer-comment-form").toggle();
     })
   })
 
   $(".answer-comment-form").on("submit", function(event) {
     event.preventDefault();
-    var button = $(".create-answer-comment");
-    var form = $(".answer-comment-form");
     var paramsData = {content: $(this).parent().find('.input-content').val(),
                       type: "Answer"};
     var request = $.ajax({url: $(this).attr("action"), type: "POST", data: paramsData, context: this})
     request.done(function(data) {
-      button.before(data);
-      form.toggle();
+      $(this).parent().find(".create-answer-comment").before(data);
+      $(this).parent().find(".answer-comment-form").toggle();
     })
   })
 

@@ -26,7 +26,6 @@ class ResponsesController < ApplicationController
     end
     @user = User.find(session[:user_id])
     @user.responses << @response
-    # verify for answer or for question
     render :layout => false
   end
 

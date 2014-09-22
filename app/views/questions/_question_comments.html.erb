@@ -6,7 +6,7 @@
 <% if session[:user_id] %>
   <p class="create-question-comment">create comment</p>
   <form class="question-comment-form" action="/users/<%=@user.id%>/questions/<%=@question.id%>/responses" method="post">
-    <input type="text" name="content">
+    <input class="input-content" type="text" name="content">
     <input class="question-comment-submit" type="submit">
   </form>
 <% end %>
