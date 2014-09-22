@@ -18,4 +18,5 @@ Stockoverflow::Application.routes.draw do
   delete '/sessions' => 'sessions#destroy'
   post   '/sessions/new'  => 'sessions#create'
 
+
 end

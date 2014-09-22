@@ -1,5 +1,11 @@
 <% @current_answer.responses.each do |response| %>
-  <p>------------</p>
   <p><%= response.content %> | <%= User.find(response.user_id).username %></p>
+<% end %>
 
+<% if session[:user_id] %>
+  <p class="create-answer-comment">create comment</p>
+  <form class="answer-comment-form" action="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=@current_answer.id%>/responses" method="post">
+    <input class="input-content" type="text" name="content">
+    <input class="answer-comment-submit" type="submit">
+  </form>
 <% end %>

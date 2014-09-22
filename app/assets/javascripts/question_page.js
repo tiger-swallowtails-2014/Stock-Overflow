@@ -2,6 +2,8 @@ $(document).ready(function() {
   bindEvents();
   $('.question-comments-container').hide();
   $('.answer-comments-container').hide();
+  $('.question-comment-form').hide();
+  $('.answer-comment-form').hide();
 })
 
 function bindEvents() {
@@ -10,6 +12,12 @@ function bindEvents() {
   })
   $('.show-answer-comments').bind("click", function() {
     $(this).parent().find(".answer-comments-container").toggle('slow');
+  })
+  $('.create-question-comment').click(function() {
+    $('.question-comment-form').toggle('slow');
+  })
+  $('.create-answer-comment').bind("click", function() {
+    $(this).parent().find(".answer-comment-form").toggle('slow');
   })
   $('body').on("click", ".upvote", function(event) {
     event.preventDefault();
@@ -27,6 +35,7 @@ function bindEvents() {
       }
     })
   })
+
   $('body').on("click", ".downvote", function(event) {
     event.preventDefault();
     if ($(this).attr("href").indexOf("answers") > -1) {
@@ -44,12 +53,26 @@ function bindEvents() {
     })
   })
 
-  // $('.answers-container').on("click", ".show-answer-comments", function(event) {
-  //   event.preventDefault();
-  //   var request = $.ajax({url: $(this).attr("href"), type: "GET"});
-  //   request.done(function(data) {
-  //     console.log("success");
-  //     console.log(data)
-  //   })
-  // })
+  $(".question-comment-form").on("submit", function(event) {
+    event.preventDefault();
+    var paramsData = {content: $(this).parent().find('.input-content').val(),
+                      type: "Question"};
+    var request = $.ajax({url: $(this).attr("action"), type: "POST", data: paramsData, context: this})
+    request.done(function(data) {
+      $(this).parent().find(".create-question-comment").before(data);
+      $(this).parent().find(".answer-comment-form").toggle();
+    })
+  })
+
+  $(".answer-comment-form").on("submit", function(event) {
+    event.preventDefault();
+    var paramsData = {content: $(this).parent().find('.input-content').val(),
+                      type: "Answer"};
+    var request = $.ajax({url: $(this).attr("action"), type: "POST", data: paramsData, context: this})
+    request.done(function(data) {
+      $(this).parent().find(".create-answer-comment").before(data);
+      $(this).parent().find(".answer-comment-form").toggle();
+    })
+  })
+
 }

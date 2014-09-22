@@ -26,38 +26,26 @@
     <!-- comments -->
     <a class="show-question-comments">Comments</a>
     <div class="question-comments-container">
-      <!-- <p><%= @question.responses.each  %></p> -->
       <%= render 'question_comments' %>
     </div>
   </div>
 
-
   <div class="answers-container">
-    <% @question.answers.each do |answer| %>
+    <div class="answer-count">
+      <%= @question.answers.count %> Answers
+    </div>
+    <% @question.answers.each_with_index do |answer, index| %>
       <% user = User.find(answer.user_id) %>
       <% votes = Vote.where(vote_context_id: answer.id, vote_context_type: "Answer") %>
-      <div class="answer-count">
-        <%= @question.answers.count %> Answers
-      </div>
-
       <div class="answer-container">
-
         <div class="votecount">
           <a class="upvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=answer.id%>/votes/new"><i class="fa fa-chevron-circle-up"></i></a></br>
           <p class="answer-vote-count"><%= votes.count %></p>
           <a class="downvote" href="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=answer.id%>/votes/destroy"><i class="fa fa-chevron-circle-down"></i></a></br>
         </div>
-
         <p><%= answer.content %></p>
         <p>answered by: <%= user.username %></p>
-   <!--      <% if votes %>
-          <p class="answer-vote-count">Votes: <%= votes.count %></p>
-        <% else %>
-          <p class="answer-vote-count">Votes: 0</p>
-        <% end %> -->
-
         <!-- comments -->
-        <br><br><br>
         <a class="show-answer-comments">Comments</a>
         <div class="answer-comments-container">
           <!-- <p><%= @question.responses.each  %></p> -->
@@ -65,7 +53,6 @@
           <%= render 'answer_comments' %>
         </div>
       </div>
-
     <% end %>
   </div>
 </div>

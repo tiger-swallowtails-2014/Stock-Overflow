@@ -12,20 +12,21 @@ class QuestionsController < ApplicationController
 
   end
 
+
   def create
     @user = User.find(params[:user_id])
     @question = Question.new params[:question]
 
-    if @question.save 
-      redirect_to user_question_path(@user, @question) 
-    else 
-      render :new 
-    end 
-  end 
+    if @question.save
+      redirect_to user_question_path(@user, @question)
+    else
+      render :new
+    end
+  end
 
   def new
     @question = Question.new
-  end 
+  end
 
   private
 
