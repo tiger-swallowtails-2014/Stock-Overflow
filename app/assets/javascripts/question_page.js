@@ -64,6 +64,7 @@ function bindEvents() {
     var request = $.ajax({url: $(this).attr("action"), type: "POST", data: paramsData, context: this})
     request.done(function(data) {
       $(this).parent().find(".create-question-comment").before(data);
+      $(this).parent().find(".question-comment-form").find(".input-content").val("");
       $(this).parent().find(".question-comment-form").toggle();
     })
   })
@@ -75,6 +76,7 @@ function bindEvents() {
     var request = $.ajax({url: $(this).attr("action"), type: "POST", data: paramsData, context: this})
     request.done(function(data) {
       $(this).parent().find(".create-answer-comment").before(data);
+      $(this).parent().find(".answer-comment-form").find(".input-content").val("");
       $(this).parent().find(".answer-comment-form").toggle();
     })
   })

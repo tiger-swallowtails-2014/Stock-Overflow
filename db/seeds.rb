@@ -15,7 +15,7 @@ def create_questions
   User.find(2).questions << Question.create(title: "What is mutual fund?", content: "Can you explain this")
   User.find(2).questions << Question.create(title: "What is an IPO?", content: "Can you explain this")
   User.last.questions << Question.create(title: "What is the difference between a stock exchange and futures exchange?", content: "Can you explain this")
-  User.last.questions << Question.create(title: "What is the difference between a long and a short position in the market?", content: "Can you explain this")
+  User.last.questions << Question.create(title: "What's the difference between a long and short position?", content: "What is the difference between a long and a short position in the market? I don't understand the difference at all. Can you explain this")
   User.last.questions << Question.create(title: "Why are the trading area called pits?", content: "Can you explain this")
   User.last.questions << Question.create(title: "What is a broker?", content: "Can you explain this")
 

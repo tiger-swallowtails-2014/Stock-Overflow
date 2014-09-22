@@ -2,9 +2,9 @@
 
  <div class="entry_button">
   <ul>
-    <li><h1>Stock<span>Overflow</span> <i class="fa fa-line-chart"></i></h1></li>
-    <li><%=link_to User.find(session[:user_id]).username, user_path(session[:user_id])%></li>
-    <li><%= button_to "Sign Out", sessions_path, :method => :delete %></li>
+    <li><a href="/" class="logo-link"><h1>Stock<span>Overflow</span> <i class="fa fa-line-chart"></i></h1></a></li>
+    <li class="user_name"><%=link_to User.find(session[:user_id]).username, user_path(session[:user_id])%></li>
+    <li><%= link_to "Sign Out", sessions_path, :method => :delete, class: "signout" %></li>
   </ul>
 </div>
 
@@ -30,11 +30,13 @@
       <%= render 'question_comments' %>
     </div>
   </div>
+    <br>
 
   <div class="answers-container">
     <div class="answer-count">
       <%= @question.answers.count %> Answers
     </div>
+
     <% @question.answers.each_with_index do |answer, index| %>
       <% user = User.find(answer.user_id) %>
       <% votes = Vote.where(vote_context_id: answer.id, vote_context_type: "Answer") %>

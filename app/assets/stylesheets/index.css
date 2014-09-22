@@ -1,6 +1,46 @@
+
 body {
   background-color: #4188D2;
   background: url(http://fc09.deviantart.net/fs70/i/2012/018/d/1/ny_street_by_diotav-d4mrqln.jpg)no-repeat center center fixed;
+}
+
+.user_name {
+  font-size: 30px;
+  font-family: 'PT Serif', serif;
+}
+
+.question-form-container {
+  width: 800px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container_text{
+  text-align: center;
+  /*margin-left: 30%;*/
+}
+
+.show-question-form {
+  text-align: center;
+  display: block;
+  font-size: 18px;
+  margin-top: 2%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5%;
+  color: #000000;
+  background-color: #ECF0F1;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.question_form{
+  display: inline-block;
+  text-align: center;
+  margin-left: 29%;
 }
 
 hr {
@@ -15,7 +55,7 @@ hr {
 .signin {
   font-size: 16px;
   background-color:#ECF0F1;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   border-radius: 5px;
   padding: 5px;
   margin-right: 1%;
@@ -24,7 +64,7 @@ hr {
 .signup {
   font-size: 16px;
   background-color:#ECF0F1;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   border-radius: 5px;
   padding: 5px;
   color: #000000;
@@ -48,7 +88,7 @@ hr {
   font-family: 'Oxygen', sans-serif;
 }
 
-button {
+.button {
   font-size: 18px;
   margin-top: 2%;
   position: relative;
@@ -58,7 +98,7 @@ button {
   left: 32%;
   color: #000000;
   background-color: #ECF0F1;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   border-radius: 5px;
   padding: 7px;
 }
@@ -68,7 +108,7 @@ button:focus {
 }
 
 button:hover {
-  background-color: #1E8BC3;
+  background-color: orange;
   transition: background-color 0.5s ease;
 }
 
@@ -110,7 +150,7 @@ button:hover {
 }
 
 .entry_button ul li h1{
-  margin-right: 690px;
+  margin-right: 450px;
   font-family: 'Playball', cursive;
   font-size: 50px;
   padding: 0%;
@@ -160,12 +200,22 @@ span {
 
 a:link {
   text-decoration: none;
-  color:#1435AD;
+  color:grey;
   font-style: bold;
+}
+
+a:hover {
+  color: orange;
+  transition: color, 0.5s;
 }
 
 a:visited {
   text-decoration: none;
-  color:#1435AD;
+  color:grey;
   font-style: bold;
+}
+
+a:visited:hover {
+  color: orange;
+  transition: color, 0.5s;
 }
