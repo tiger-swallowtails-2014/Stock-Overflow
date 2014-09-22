@@ -1,8 +1,20 @@
 class AnswersController < ApplicationController
-  # def show
-  #   @responses = Response.where(response_context_id: params[:question_id], response_context_type: "Answer")
-  #   # render nothing: true
-  #   render html: :show
-  # end
+  def create
+    load_user; load_question
+    @answer = Answer.create(content: params[:content])
+    @user.answers << @answer
+    @question.answers << @answer
+    render nothing: true
+  end
+
+  private
+
+  def load_user
+    @user = User.find(session[:user_id])
+  end
+
+  def load_question
+    @question = Question.find(params[:question_id])
+  end
 end
 

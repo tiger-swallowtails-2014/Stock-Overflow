@@ -1,0 +1,7 @@
+<% if session[:user_id] %>
+  <h3 class="create-answer">Answer this question!</h3>
+  <form class="answer-form" action="/users/<%=@user.id%>/questions/<%=@question.id%>/answers" method="post">
+    <input class="input-content" type="text" name="content" placeholder="answer here" >
+    <input class="answer-submit" type="submit">
+  </form>
+<% end %>

@@ -3,14 +3,9 @@ class ResponsesController < ApplicationController
   end
   def show
   end
-  def new
-    p "reached here"
-    @response = Response.new
-    render :layout => false
-  end
+
 
   def create
-    p params
     if params[:type] == "Question"
       @response = Response.create(
         content: params[:content],

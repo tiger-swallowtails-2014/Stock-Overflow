@@ -5,8 +5,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    # load_question; load_user
-    # @answers = @question.answers
     @user = User.find(params[:user_id])
     @question = Question.find(params[:id])
 

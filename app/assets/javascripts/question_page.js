@@ -4,6 +4,7 @@ $(document).ready(function() {
   $('.answer-comments-container').hide();
   $('.question-comment-form').hide();
   $('.answer-comment-form').hide();
+  $('.answer-form').hide();
 })
 
 function bindEvents() {
@@ -18,6 +19,9 @@ function bindEvents() {
   })
   $('.create-answer-comment').bind("click", function() {
     $(this).parent().find(".answer-comment-form").toggle('slow');
+  })
+  $('.create-answer').click(function() {
+    $(this).parent().find(".answer-form").toggle('slow')
   })
   $('body').on("click", ".upvote", function(event) {
     event.preventDefault();
@@ -60,7 +64,7 @@ function bindEvents() {
     var request = $.ajax({url: $(this).attr("action"), type: "POST", data: paramsData, context: this})
     request.done(function(data) {
       $(this).parent().find(".create-question-comment").before(data);
-      $(this).parent().find(".answer-comment-form").toggle();
+      $(this).parent().find(".question-comment-form").toggle();
     })
   })
 
@@ -72,6 +76,14 @@ function bindEvents() {
     request.done(function(data) {
       $(this).parent().find(".create-answer-comment").before(data);
       $(this).parent().find(".answer-comment-form").toggle();
+    })
+  })
+
+  $(".answer-form").on("submit", function(event) {
+    event.preventDefault();
+    var request = $.ajax({url: $(this).attr("action"), type: "POST", data: $(this).serialize(), context: this});
+    request.done(function(data) {
+      location.reload();
     })
   })
 
