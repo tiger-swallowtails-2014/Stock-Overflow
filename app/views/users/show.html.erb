@@ -1,3 +1,14 @@
 <h1>Profile Page</h1>
 
 <%= link_to "Ask a new question", new_user_question_path(@user) %>
+
+
+<h2>Questions you recently asked</h2> 
+	<% @questions.each do |question| %>
+		<h4><%= question.title %></h4>
+		<% end %> 
+
+<h2>Your Recent Responses</h2> 
+	<% @responses.each do |response| %> 
+		<h4><%= response.content %></h4> 
+		<% end %> 
