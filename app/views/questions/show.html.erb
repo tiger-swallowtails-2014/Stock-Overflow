@@ -2,7 +2,7 @@
 
  <div class="entry_button">
   <ul>
-    <li><h1>STOCK OVERFLOW</h1></li>
+    <li><h1>Stock<span>Overflow</span> <i class="fa fa-line-chart"></i></h1></li>
     <li><%=link_to User.find(session[:user_id]).username, user_path(session[:user_id])%></li>
     <li><%= button_to "Sign Out", sessions_path, :method => :delete %></li>
   </ul>
