@@ -2,6 +2,7 @@ $(document).ready(function() {
   bindEvents();
   $('.question-comments-container').hide();
   $('.answer-comments-container').hide();
+  $('.question-comment-form').hide();
 })
 
 function bindEvents() {
@@ -10,6 +11,9 @@ function bindEvents() {
   })
   $('.show-answer-comments').bind("click", function() {
     $(this).parent().find(".answer-comments-container").toggle('slow');
+  })
+  $('.create-comment').click(function() {
+    $('.question-comment-form').toggle('slow');
   })
   $('body').on("click", ".upvote", function(event) {
     event.preventDefault();
@@ -27,6 +31,7 @@ function bindEvents() {
       }
     })
   })
+
   $('body').on("click", ".downvote", function(event) {
     event.preventDefault();
     if ($(this).attr("href").indexOf("answers") > -1) {
@@ -44,12 +49,26 @@ function bindEvents() {
     })
   })
 
-  // $('.answers-container').on("click", ".show-answer-comments", function(event) {
+  // $(".create-comment").click(functon() {
+  //   $(".")
+  // })
+  // $(".question-comments-container").on("click", ".create-comment", function(event) {
   //   event.preventDefault();
-  //   var request = $.ajax({url: $(this).attr("href"), type: "GET"});
+  //   var request = $.ajax({url: $(this).attr("href"), type: "GET", context: this})
   //   request.done(function(data) {
   //     console.log("success");
-  //     console.log(data)
+  //     console.log(data);
+  //     $(this).parent().append(data)
   //   })
+  // })
+
+  // $(".question-comment-submit").on("click", function(event) {
+  //   debugger
+  //   event.preventDefault();
+  //   console.log("clicked");
+  //   // var request = $.ajax({url: $(this).attr("href"), type: "GET"})
+  //   // request.done(function() {
+  //   //   console.log("success");
+  //   // })
   // })
 }

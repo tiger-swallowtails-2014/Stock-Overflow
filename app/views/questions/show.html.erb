@@ -26,11 +26,9 @@
     <!-- comments -->
     <a class="show-question-comments">Comments</a>
     <div class="question-comments-container">
-      <!-- <p><%= @question.responses.each  %></p> -->
       <%= render 'question_comments' %>
     </div>
   </div>
-
 
   <div class="answers-container">
     <% @question.answers.each do |answer| %>
@@ -50,11 +48,6 @@
 
         <p><%= answer.content %></p>
         <p>answered by: <%= user.username %></p>
-   <!--      <% if votes %>
-          <p class="answer-vote-count">Votes: <%= votes.count %></p>
-        <% else %>
-          <p class="answer-vote-count">Votes: 0</p>
-        <% end %> -->
 
         <!-- comments -->
         <br><br><br>
