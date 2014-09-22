@@ -1,13 +1,11 @@
 <!-- TODO: REFACTOR THE LOGICS OUT OF THE VIEW! -->
 <% @question.responses.each do |response| %>
-  <p>------------</p>
   <p><%= response.content %> | <%= User.find(response.user_id).username %></p>
 <% end %>
 
 <% if session[:user_id] %>
-  <!-- <%= link_to "new comment", new_user_question_response_path(@user, @question), class: "create-comment" %>-->
-  <p class="create-comment">create comment</p>
-  <form class="question-comment-form" action="" method="post">
+  <p class="create-question-comment">create comment</p>
+  <form class="question-comment-form" action="/users/<%=@user.id%>/questions/<%=@question.id%>/responses" method="post">
     <input type="text" name="content">
     <input class="question-comment-submit" type="submit">
   </form>
