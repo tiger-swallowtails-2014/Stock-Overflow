@@ -1,17 +1,17 @@
 <% if session[:user_id] %>
   <div class="entry_button">
     <ul>
-      <li><h1>STOCK OVERFLOW</h1></li>
+      <li><h1>Stock<span>Overflow</span> <i class="fa fa-line-chart"></i></h1></li>
       <li><%=link_to @user.username, user_path(@user)%></li>
-      <li><%= button_to "Sign Out", sessions_path, :method => :delete %></li>
+      <li><%= link_to "Sign Out", sessions_path, :method => :delete %></li>
     </ul>
   </div>
 <% else %>
   <div class="entry_button">
     <ul>
-      <li><h1>STOCK OVERFLOW</h1></li>
-      <li><%=link_to "Sign Up", new_user_path %></li>
-      <li><%=link_to "Sign In", sessions_path %></li>
+      <li><h1>Stock<span>Overflow</span> <i class="fa fa-line-chart"></i></h1></li>
+      <li class="signin"><%=link_to "Sign Up", new_user_path %></li>
+      <li class="signup"><%=link_to "Sign In", sessions_path %></li>
     </ul>
   </div>
 <% end %>
@@ -30,7 +30,7 @@
       <div class="question">
         <ul>
           <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
-          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
+          <li> <div class="numresponses"><%=question.responses.count %> Answers </div> </li>
           <li> <div class="title"><%= link_to question.title, user_question_path(User.find(question.user_id), question) %> </div> </li>
         <ul>
       </div>
@@ -43,7 +43,7 @@
        <div class="question">
         <ul>
           <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
-          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
+          <li> <div class="numresponses"><%=question.responses.count %> Answers </div> </li>
           <li> <div class="title"><%= link_to question.title, user_question_path(User.find(question.user_id), question) %> </div> </li>
         <ul>
       </div>
@@ -56,7 +56,7 @@
        <div class="question">
         <ul>
           <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
-          <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
+          <li> <div class="numresponses"><%=question.responses.count %> Answers </div> </li>
           <li> <div class="title"><%= link_to question.title, user_question_path(User.find(question.user_id), question) %> </div> </li>
         <ul>
       </div>
