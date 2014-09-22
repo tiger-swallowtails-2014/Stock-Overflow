@@ -1,18 +1,39 @@
-<h1>Profile Page</h1>
-
-
-<div class="question-form-container">
-  <p class="show-question-form">Ask a question</p>
-    <%= render 'new_question' %>
+<% if session[:user_id] %>
+<div class="entry_button">
+  <ul>
+    <li><a href="/" class="logo-link"><h1>Stock<span>Overflow</span> <i class="fa fa-line-chart"></i></h1></a></li>
+    <li class="user_name"><%=link_to @user.username, user_path(@user)%></li>
+    <li><%= link_to "Sign Out", sessions_path, :method => :delete, class: "signout" %></li>
+  </ul>
 </div>
 
-<h2>Questions you recently asked</h2>
+<% else %>
+<div class="entry_button">
+  <ul>
+   <li><a href="/" class="logo-link"><h1>Stock<span>Overflow</span> <i class="fa fa-line-chart"></i></h1></a></li>
+   <li class="signin"><%=link_to "Sign Up", new_user_path %></li>
+   <li class="signup"><%=link_to "Sign In", sessions_path %></li>
+ </ul>
+</div>
+<% end %>
+<hr class="line">
+
+<div class="container">
+<div class="question-form-container">
+  <button class="show-question-form">Ask a question</button>
+   <div class="question_form"> <%= render 'new_question' %> </div>
+</div>
+
+<div class="container_text">
+  <h2>Questions you recently asked</h2>
 	<% @questions.each do |question| %>
 		<h4><%= link_to question.title, user_question_path(@user, question) %></h4>
 	<% end %>
 
 
-<h2>Your Recent Comments</h2>
+  <h2>Your Recent Comments</h2>
 	<% @responses.each do |response| %>
 		<h4><%= response.content %></h4>
 		<% end %>
+  </div>
+</div>
