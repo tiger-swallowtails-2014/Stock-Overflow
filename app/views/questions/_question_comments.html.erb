@@ -1,6 +1,6 @@
 <!-- TODO: REFACTOR THE LOGICS OUT OF THE VIEW! -->
 <% @question.responses.each do |response| %>
-  <p><%= response.content %> | <%= User.find(response.user_id).username %></p>
+    <p><%= response.content %> | <em><%= User.find(response.user_id).username %></em></p>
 <% end %>
 
 <% if session[:user_id] %>
