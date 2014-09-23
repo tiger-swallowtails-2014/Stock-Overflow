@@ -1,3 +1,4 @@
+<!-- CR create a logged in / logged out partial -->
 <% if session[:user_id] %>
 <div class="entry_button">
   <ul>
@@ -26,11 +27,13 @@
 
 <div class="container recent">
   <h1 class="questiontitle">Most Recent Questions</h1>
+  <!-- CR use includes and revers in the model or controller -->
   <%  @most_recent_questions.reverse_each do |question| %>
   <div class="question">
     <ul>
       <li> <div class="numvotes"><%=question.votes.count %> Votes </div> </li>
       <li> <div class="numresponses"><%=question.responses.count %> Responses </div> </li>
+      <!-- CR send the user to the view from the controller  -->
       <li> <div class="title"><%= link_to question.title, user_question_path(User.find(question.user_id), question) %> </div> </li>
       <ul>
       </div>

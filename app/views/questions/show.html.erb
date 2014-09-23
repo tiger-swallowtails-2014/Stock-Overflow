@@ -1,8 +1,10 @@
 <!-- TODO: REFACTOR THE LOGICS OUT OF THE VIEW! -->
 
+<!-- CR generally login should be its own partial -->
  <div class="entry_button">
   <ul>
     <li><a href="/" class="logo-link"><h1>Stock<span>Overflow</span> <i class="fa fa-line-chart"></i></h1></a></li>
+    <!-- CR use current_user -->
     <li class="user_name"><%=link_to User.find(session[:user_id]).username, user_path(session[:user_id])%></li>
     <li><%= link_to "Sign Out", sessions_path, :method => :delete, class: "signout" %></li>
   </ul>

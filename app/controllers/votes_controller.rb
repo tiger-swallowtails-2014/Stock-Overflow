@@ -6,6 +6,8 @@ class VotesController < ApplicationController
 
   def new
     p "clicked"
+    # CR use @question.votes.create()
+
     if params[:context_type] == "Question"
       @question = Question.find(params[:question_id])
       @question.votes << Vote.create(vote_context_id: params[:question_id], vote_context_type: "Question");
