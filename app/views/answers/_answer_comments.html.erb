@@ -1,8 +1,11 @@
+<!-- CR no model names (User) in views EVER -->
+<!-- CR Use AR includes in the controller to avoid the n+1 effect -->
 <% @current_answer.responses.each do |response| %>
     <p><%= response.content %> | <em><%= User.find(response.user_id).username %></em></p>
 <% end %>
 
 <% if session[:user_id] %>
+<!-- CR use the current_user helper method -->
   <p class="create-answer-comment">create comment</p>
   <form class="answer-comment-form" action="/users/<%=@user.id%>/questions/<%=@question.id%>/answers/<%=@current_answer.id%>/responses" method="post">
     <input class="input-content" type="text" name="content" placeholder="comment here" >

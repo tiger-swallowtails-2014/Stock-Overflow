@@ -1,5 +1,8 @@
+// CR try to have one document.ready method for all the scripts.
+
 $(document).ready(function() {
   bindEvents();
+  // These should be encapsulated into a Question/ Answer View class
   $('.question-comments-container').hide();
   $('.answer-comments-container').hide();
   $('.question-comment-form').hide();
@@ -7,10 +10,15 @@ $(document).ready(function() {
   $('.answer-form').hide();
 })
 
+// use named functions for callbacks.
+
 function bindEvents() {
   $('.show-question-comments').click(function() {
     $('.question-comments-container').toggle('slow');
   })
+
+  // CR - use id's and classes over traversal methods for less fragile code.
+
   $('.show-answer-comments').bind("click", function() {
     $(this).parent().find(".answer-comments-container").toggle('slow');
   })
@@ -25,6 +33,7 @@ function bindEvents() {
   })
   $('body').on("click", ".upvote", function(event) {
     event.preventDefault();
+    // make a method for the polymorphism
     if ($(this).attr("href").indexOf("answers") > -1) {
       var context_type = "Answer";
     } else {
@@ -76,6 +85,7 @@ function bindEvents() {
     var request = $.ajax({url: $(this).attr("action"), type: "POST", data: paramsData, context: this})
     request.done(function(data) {
       $(this).parent().find(".create-answer-comment").before(data);
+      // CR use a variable to avoid finding the same thng twice.
       $(this).parent().find(".answer-comment-form").find(".input-content").val("");
       $(this).parent().find(".answer-comment-form").toggle();
     })
@@ -83,18 +93,19 @@ function bindEvents() {
 
   $(".answer-form").on("submit", function(event) {
     event.preventDefault();
+    // CR use this.action not $(this).attr("action")
     var request = $.ajax({url: $(this).attr("action"), type: "POST", data: $(this).serialize(), context: this});
     request.done(function(data) {
       location.reload();
     })
   })
 
-  $(".upvote").on("click", function() { 
-    $(this).hide(); 
+  $(".upvote").on("click", function() {
+    $(this).hide();
     $(this).parent().find(".downvote").show();
   })
-  $(".downvote").on("click", function() { 
-    $(this).hide(); 
+  $(".downvote").on("click", function() {
+    $(this).hide();
     $(this).parent().find(".upvote").show();
   })
 

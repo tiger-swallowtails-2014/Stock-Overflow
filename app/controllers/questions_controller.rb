@@ -18,8 +18,10 @@ class QuestionsController < ApplicationController
   def create
     p params
     @user = User.find(params[:user_id])
+    # CR this should be current_user use current_user.questions.create()
     @question = Question.create(title: params[:title], content: params[:content])
     @user.questions << @question
+    # CR curre
     if @question.save
       redirect_to user_question_path(@user, @question)
     else

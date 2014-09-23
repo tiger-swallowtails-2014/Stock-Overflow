@@ -6,6 +6,7 @@ class ResponsesController < ApplicationController
 
 
   def create
+    # CR pass some of this logic off to the Response Model
     if params[:type] == "Question"
       @response = Response.create(
         content: params[:content],
